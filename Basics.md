@@ -203,3 +203,5 @@ Below are a series of all the folders and commands you will use in this course.
             ps aux | grep ssh
         >& - redirect to a file descriptor.
             2>&1 | grep "open" - redirect STDERR(2) to STDOUT(1) the redirect the output to the command "grep"
+
+
