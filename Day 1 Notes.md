@@ -33,6 +33,49 @@ remove with:
 ssh-keygen -f "/home/student/.ssh/known_hosts" -R "172.16.82.106"
 ECDSA host key for 172.16.82.106 has changed and you have requested strict checking.
 Host key verification failed.
-Transport to Application Layer Complete
-Check intel on the CTF server for new information regarding mission tasks
 
+SSH Key Change Fix
+ssh-keygen -f "/home/student/.ssh/known_hosts" -R "172.16.82.106"
+Copy/Paste the ssh-keygen message to remove the Host key from the known_hosts file
+
+When you re-connect it will prompt you to save the new Host key
+
+SSH FILES
+Known-Hosts Database
+
+~/.ssh/known_hosts
+Configuration Files
+
+/etc/ssh/ssh_config
+/etc/ssh/sshd_config
+VIEW/CHANGE SSH PORT
+To view the current configured SSH port
+
+cat /etc/ssh/sshd_config | grep Port
+Edit file to change the SSH Port
+
+sudo nano /etc/ssh/sshd_config
+Restart the SSH Service
+
+systemctl restart ssh
+SSH-KEYGEN
+ssh-keygen -t rsa -b 4096 -C "Student"
+Create your own SSH Public/Private keys
+
+-t Encryption (rsa|dsa|ecdsa|ed25519)
+
+-b Bit length (1024|2048|4096)
+
+-C Adds a comment
+
+~/.ssh/id_rsa and ~/.ssh/id_rsa.pub
+
+SSH-COPY-ID
+ssh-copy-id student@172.16.82.106
+Copies your SSH Public key to the remote server
+
+Saves key to ~/.ssh/authorized_keys on remote server
+
+Allows you to authenticate with server using your key instead of password
+
+Must secure your private key
