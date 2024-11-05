@@ -8,7 +8,7 @@ student@172.16.82.106's password:
 student@blue-host-1:~$
 You will need to approve the Server Host (Public) Key
 
-##### Key is saved to /home/student/.ssh/known_hosts
+#### Key is saved to /home/student/.ssh/known_hosts
 
 SSH Re-Connect
 ssh student@172.16.82.106
