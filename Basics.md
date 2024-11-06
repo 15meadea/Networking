@@ -1,5 +1,6 @@
 http://networking-ctfd-2.server.vta:8000/user
 https://net.cybbh.io/public/networking/latest/index.html
+ssh student@10.50.29.239 -X
 # ---- WELCOME TO CCTC NETWORKING ---- #
 
 The map of the environment has been provided in your home directory:
