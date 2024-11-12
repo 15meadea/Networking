@@ -90,8 +90,6 @@ exec 3<>/dev/tcp/172.16.82.106/22; echo -e "" >&3; cat <&3
 DEV TCP Scanning
 for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo "$p open"; done
 
-![offensivefinishednetwork](https://github.com/user-attachments/assets/ceac322a-6cd5-461a-9e8b-d78bce738e86)
-
 #!/bin/bash
 echo "Enter network address (e.g. 192.168.0): "
 read net
@@ -105,3 +103,53 @@ for ((i=$start; $i<=$end; i++))
 do
     nc -nvzw1 $net.$i $ports 2>&1 | grep -E 'succ|open'
 done
+
+
+![offensivefinishednetwork](https://github.com/user-attachments/assets/ceac322a-6cd5-461a-9e8b-d78bce738e86)
+
+Network Forensics - Mapping
+Device type (Router/host)
+
+System Host-names
+
+Interface names (eth0, eth1, etc)
+
+IP address and CIDRs for all interfaces
+
+TCP and UDP ports
+
+MAC Address
+
+OS type/version
+
+Known credentials
+
+Network Mapping Tools
+Draw.io Local (Template)
+
+Draw.io Web
+
+Witeboard.com
+
+Draw.Chat
+
+SmartDraw
+
+Ziteboard
+
+Tutorialspoint Whiteboard
+
+Explain Everything Whiteboard
+
+Network Reconnaissance Section Complete
+Check intel on the CTF server for new information regarding mission tasks.
+
+Red Network Recon
+×
+Entry Float IP: 10.50.26.58
+
+Your Network Number is N (Given by Instructor)
+
+Credentials: net{2}_studentX:passwordX
+
+X is your student number
