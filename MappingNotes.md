@@ -17,3 +17,9 @@ BR --- 64 bytes from 172.16.120.1: icmp_seq=1 ttl=62 time=1.13 ms
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Red Boundry Router Hostname: IP: 172.16.120.1 Ports: 22 Username: vyos Password: password Action: Use as start point and Perform Passive/Active Reconnaissance
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Red Network Recon × Entry Float IP: 10.50.26.58
+Your Network Number is N (Given by Instructor)
+Credentials: net{2}_studentX:passwordX
+X is your student number
