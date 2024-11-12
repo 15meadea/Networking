@@ -89,7 +89,7 @@ exec 3<>/dev/tcp/172.16.82.106/22; echo -e "" >&3; cat <&3
 
 DEV TCP Scanning
 for p in {1..1023}; do(echo >/dev/tcp/172.16.82.106/$p) >/dev/null 2>&1 && echo "$p open"; done
-
+-----------------------------------------------------------------------------------------------------
 #!/bin/bash
 echo "Enter network address (e.g. 192.168.0): "
 read net
@@ -103,7 +103,7 @@ for ((i=$start; $i<=$end; i++))
 do
     nc -nvzw1 $net.$i $ports 2>&1 | grep -E 'succ|open'
 done
-
+-----------------------------------------------------------------------------------------------------
 
 ![offensivefinishednetwork](https://github.com/user-attachments/assets/ceac322a-6cd5-461a-9e8b-d78bce738e86)
 
@@ -141,9 +141,7 @@ Tutorialspoint Whiteboard
 
 Explain Everything Whiteboard
 
-Network Reconnaissance Section Complete
-Check intel on the CTF server for new information regarding mission tasks.
-
+-----------------------------------------------------------------------------------------------------
 Red Network Recon
 ×
 Entry Float IP: 10.50.26.58
@@ -153,7 +151,7 @@ Your Network Number is N (Given by Instructor)
 Credentials: net{2}_studentX:passwordX
 
 X is your student number
-
+------------------------------------------------------------------------------------------------------
 Target Section:
 
 T1
@@ -162,7 +160,7 @@ Record Type: TXT
 IP: UNKNOWN
 Ports: 53
 Action: interrogate DNS records
-
+-----------------------------------------------------------------------------------------------------
 Red Boundry Router
 Hostname:
 IP: 172.16.120.1
@@ -170,32 +168,32 @@ Ports: 22
 Username: vyos
 Password: password
 Action: Use as start point and Perform Passive/Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T2
 Hostname: UNKNOWN
 IP: 172.16.182.110
 Action: Perform Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T3
 Hostname: UNKNOWN
 IP: 172.16.140.33
 Action: Perform Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T4
 Hostname: UNKNOWN
 IP: 172.16.182.106
 Action: Perform Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T5
 Hostname: UNKNOWN
 IP: 172.16.182.114
 Action: Perform Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T6
 Hostname: UNKNOWN
 IP: 172.16.182.118
 Action: Perform Active Reconnaissance
-
+-----------------------------------------------------------------------------------------------------
 T7
 Hostname: UNKNOWN
 IP: 172.16.140.35
