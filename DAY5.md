@@ -41,11 +41,10 @@ NETCAT Relay Demos
 Listener - Listener
 
 On Blue_Host-1 Relay:
-
 $ mknod mypipe p
 $ nc -lvp 1111 < mypipe | nc -lvp 3333 > mypipe
-On Internet_Host (send):
 
+On Internet_Host (send):
 $ nc 172.16.82.106 1111 < secret.txt
 On Blue_Priv_Host-1 (receive):
 
