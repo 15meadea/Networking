@@ -34,6 +34,9 @@ T3 (Atropia) Float IP address is - 10.50.27.164
 
 T4 (Pineland) Float IP address is - 10.50.29.131 (Note - You can only telnet here to act as an insider, this will not be a routed path)
 
+super secret sauce
+for i in {1..254} ;do (ping -c 1 192.168.1.$i | grep "bytes from" &) ;done
+
 
 Task 4 - Donovian Data Collection: Will open when Task 3 is complete
 T5 Float IP address is - 10.50.28.46
