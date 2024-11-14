@@ -21,33 +21,6 @@ ssh Toph@localhost -p 3333 -D 9050
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 DTC: Task 3-4 Start Flags
 Task 3 - Donovian Tunnels Training: dig_dug_dig_dug
 
@@ -65,3 +38,8 @@ T4 (Pineland) Float IP address is - 10.50.29.131 (Note - You can only telnet her
 Task 4 - Donovian Data Collection: Will open when Task 3 is complete
 T5 Float IP address is - 10.50.28.46
 Credentials: Same as Task 3.
+
+
+
+proxychains wget -r http://10.3.0.27
+proxychains wget -r ftp://10.3.0.1
