@@ -66,16 +66,35 @@ ssh net2_student9@localhost -p 20901 -D 9050
 (UNKNOWN) [192.168.0.20] 21 (ftp) open : Operation now in progress
 (UNKNOWN) [192.168.0.20] 80 (http) open : Operation now in progress
 alternate high ssh port used. use banner grabbing to pivot to next machine
+(192.168.0.200)
+(192.168.0.10)
+(192.168.0.50)
+(192.168.0.201) 
+ 
+
+
 
 (UNKNOWN) [192.168.0.30] 80 (http) open : Operation now in progress
-the flag on this machine is a non well known tcp port following a simmilar scheme as net-ssh-02 ports but higher
+the flag on this machine is a non well known tcp port following 
+a simmilar scheme as net-ssh-02 ports but higher
 you must connect to it somehow
 
 (UNKNOWN) [192.168.0.40] 80 (http) open : Operation now in progress
 this machine has access to the 172.16.0.0/24 network
 need t find alternate sshd port to progress
 
+(UNKNOWN) [172.16.0.60] 23 (telnet) open : Operation now in progress
+(UNKNOWN) [172.16.0.60] 21 (ftp) open : Operation now in progress
+(UNKNOWN) [172.16.0.60] 80 (http) open : Operation now in progress
+
+
+
+you have entered Donovia credentials for this network are 
+net2_comrade9:privet9
+
+
 ssh net2_student9@localhost -p 20901 -L 20902:192.168.0.10:22
+
 
 
 
