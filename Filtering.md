@@ -1,6 +1,6 @@
-#Filtering
+# Filtering
 
-#Common iptable options
+# Common iptable options
 -t - Specifies the table. (Default is filter)
 -A - Appends a rule to the end of the list or below specified rule
 -I - Inserts the rule at the top of the list or above specified rule
@@ -22,20 +22,20 @@
 -j - Specifies the jump target action
 
 
-#iptables syntax
+# iptables syntax
 iptables -t [table] -A [chain] [rules] -j [action]
 Table: filter*, nat, mangle
 
 Chain: INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD
 
 
-#iptables rules syntax
+# iptables rules syntax
 -i [ iface ]
 -o [ iface ]
 -s [ ip.add | network/CIDR ]
 -d [ ip.add | network/CIDR ]
 
-#iptables rules syntax
+# iptables rules syntax
 -p icmp [ --icmp-type type# { /code# } ]
 -p tcp [ --sport | --dport { port1 |  port1:port2 } ]
 -p tcp [ --tcp-flags SYN,ACK,PSH,RST,FIN,URG,ALL,NONE ]
@@ -47,13 +47,13 @@ Chain: INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD
 -m bpf --bytecode [ 'bytecode' ]
 -m iprange [ --src-range | --dst-range { ip1-ip2 } ]
 
-#iptables action syntax
+# iptables action syntax
 ACCEPT - Allow the packet
 REJECT - Deny the packet (send an ICMP reponse)
 DROP - Deny the packet (send no response)
 -j [ ACCEPT | REJECT | DROP ]
 
-#Modify iptables
+# Modify iptables
 Flush table
 iptables -t [table] -F
 Change default policy
