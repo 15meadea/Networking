@@ -31,9 +31,24 @@ Chain: INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD
 
 iptables rules syntax
 -i [ iface ]
-
 -o [ iface ]
-
 -s [ ip.add | network/CIDR ]
-
 -d [ ip.add | network/CIDR ]
+
+iptables rules syntax
+-p icmp [ --icmp-type type# { /code# } ]
+-p tcp [ --sport | --dport { port1 |  port1:port2 } ]
+-p tcp [ --tcp-flags SYN,ACK,PSH,RST,FIN,URG,ALL,NONE ]
+-p udp [ --sport | --dport { port1 | port1:port2 } ]
+-m to enable iptables extensions:
+-m state --state NEW,ESTABLISHED,RELATED,UNTRACKED,INVALID
+-m mac [ --mac-source | --mac-destination ] [mac]
+-p [tcp|udp] -m multiport [ --dports | --sports | --ports { port1 | port1:port15 } ]
+-m bpf --bytecode [ 'bytecode' ]
+-m iprange [ --src-range | --dst-range { ip1-ip2 } ]
+
+iptables action syntax
+ACCEPT - Allow the packet
+REJECT - Deny the packet (send an ICMP reponse)
+DROP - Deny the packet (send no response)
+-j [ ACCEPT | REJECT | DROP ]
