@@ -20,3 +20,20 @@ Common iptable options
 -s - Specifies the source IP
 -d - Specifies the destination IP
 -j - Specifies the jump target action
+
+
+iptables syntax
+iptables -t [table] -A [chain] [rules] -j [action]
+Table: filter*, nat, mangle
+
+Chain: INPUT, OUTPUT, PREROUTING, POSTROUTING, FORWARD
+
+
+iptables rules syntax
+-i [ iface ]
+
+-o [ iface ]
+
+-s [ ip.add | network/CIDR ]
+
+-d [ ip.add | network/CIDR ]
