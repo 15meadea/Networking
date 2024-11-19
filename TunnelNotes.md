@@ -70,7 +70,20 @@ alternate high ssh port used. use banner grabbing to pivot to next machine
 (192.168.0.10)
 (192.168.0.50)
 (192.168.0.201) 
+
+
+
+ssh student@10.50.29.239 -R 1111:localhost:8462
+ssh Eric@localhost -p 1111 -L 2222:192.168.100.60:22
+ssh Kenny@localhost -p 2222 -L 3333:10.90.50.140:6481
+ssh Kyle@localhost -p 3333 -L 2323:172.20.21.5:23
+ssh Kyle@172.20.21.4 -p 6481 -R 5555:localhost:22
+ssh Kyle@localhost -p 3333 -L 6666:localhost:5555
+ssh Stan@localhost -p 6666 -D 9050
+proxychains nc localhost 65432
+
  
+![ffa33438359ebe6c850ee21d02333155](https://github.com/user-attachments/assets/31f364e0-a91b-4dc3-b724-1984ad084d8c)
 
 
 
