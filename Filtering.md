@@ -68,3 +68,106 @@ Replaces rule at number
 iptables -t [table] -R [chain] [rule num] [rules] -j [action]
 Deletes rule at number
 iptables -t [table] -D [chain] [rule num]
+
+
+# NFTABLES
+
+# NFTable Enhancements
+One table command to replace:
+iptables
+ip6tables
+arptables
+ebtables
+
+# NFTables families
+ip - IPv4 packets
+ip6 - IPv6 packets
+inet - IPv4 and IPv6 packets
+arp - layer 2
+bridge - processing traffic/packets traversing bridges.
+netdev - allows for user classification of packets - nftables passes up to the networking stack (no counterpart in iptables)
+
+# NFTables hooks
+ingress - netdev only
+prerouting
+input
+forward
+output
+postrouting
+
+# NFTables Chain-types
+There are three chain types:
+filter - to filter packets - can be used with arp, bridge, ip, ip6, and inet families
+route - to reroute packets - can be used with ip and ipv6 families only
+nat - used for Network Address Translation - used with ip and ip6 table families only
+
+# NFTables syntax
+## 1. Create the Table
+nft add table [family] [table]
+[family] = ip*, ip6, inet, arp, bridge and netdev.
+
+[table] = user provided name for the table.
+
+## 2. Create the Base Chain
+nft add chain [family] [table] [chain] { type [type] hook [hook]
+    priority [priority] \; policy [policy] \;}
+* [chain] = User defined name for the chain.
+
+* [type] =  can be filter, route or nat.
+
+* [hook] = prerouting, ingress, input, forward, output or
+         postrouting.
+
+* [priority] = user provided integer. Lower number = higher
+             priority. default = 0. Use "--" before
+             negative numbers.
+
+* ; [policy] ; = set policy for the chain. Can be
+              accept (default) or drop.
+
+ Use "\" to escape the ";" in bash
+
+## 3. Create a rule in the Chain
+nft add rule [family] [table] [chain] [matches (matches)] [statement]
+* [matches] = typically protocol headers(i.e. ip, ip6, tcp,
+            udp, icmp, ether, etc)
+
+* (matches) = these are specific to the [matches] field.
+
+* [statement] = action performed when packet is matched. Some
+              examples are: log, accept, drop, reject,
+              counter, nat (dnat, snat, masquerade)
+
+# Rule Match options
+ip [ saddr | daddr { ip | ip1-ip2 | ip/CIDR | ip1, ip2, ip3 } ]
+
+tcp flags { syn, ack, psh, rst, fin }
+
+tcp [ sport | dport { port1 | port1-port2 | port1, port2, port3 } ]
+
+udp [ sport| dport { port1 | port1-port2 | port1, port2, port3 } ]
+
+icmp [ type | code { type# | code# } ]
+
+#Rule Match options
+ct state { new, established, related, invalid, untracked }
+
+iif [iface]
+
+oif [iface]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
