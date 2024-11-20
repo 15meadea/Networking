@@ -156,6 +156,195 @@ iif [iface]
 
 oif [iface]
 
+----------------------------------------------------------------------------------------------------
+To initiate a shutdown in 5 minutes:
+sudo shutdown -r 5
+To cancel the shutdown:
+sudo shutdown -c
+
+
+
+
+
+Task 1
+IPTables/NFTables - Host Filtering
+
+You are required to Setup and Test all Rules, prior to implementing any DROP Policy as you may lose connection if improperly configured. Notify Mission Command(Instructor) if connections are dropped.
+
+IPTable Rule Definitions for T1
+
+IPTable Rule Definitions for T3
+
+NFTable Rule Definitions for T2
+
+Validation of IPTables and NFTables
+
+---------------------------------------------------------------------------------------------------------
+
+
+Task 2
+IPTables/NFTables - NAT
+
+You are required to establishing NAT policies for T5 and T6 through the respective BLUE_HOST's they are attached to.
+
+Prepare T1 for NAT Configurations
+
+Change the Default Policy in the Filter Table for the INPUT, OUTPUT, and FORWARD chains to ACCEPT
+
+Flush your current iptables rules.
+
+Temporarily enable IPv4 forwarding using the /proc/sys/net/ipv4/ip_forward file
+
+Prepare T5 for NAT Configurations
+
+Ensure there is a Default GW entry present for 192.168.1.1
+
+You can use sudo ip route replace default via 192.168.1.1
+
+
+Prepare T2 for NAT Configurations
+
+Change your chains to now have a policy of Accept
+
+Flush your current nftables rules.
+
+Temporarily enable IPv4 forwarding using the /proc/sys/net/ipv4/ip_forward file
+
+Prepare T6 for NAT Configurations
+
+Ensure there is a Default GW entry present for 192.168.3.1
+
+You can use sudo ip route replace default via 192.168.3.1
+
+
+---------------------------------------------------------------------------------------------------------
+
+
+Task 3
+Signatures
+
+Gorgan Cyber Forces have captured targeted traffic related to specific Indicators of Compromise (IOCs) relating to Donovian Actors. They have stored the Traffic Capture on the Pivot:
+
+/home/activity_resources/pcaps/ids.pcap
+
+They have also provided the following syntax for utilizing Snort, their implemented IDS Signature solution:
+
+To Capture traffic over the network using Snort:
+
+sudo snort -D -i eth0 -l /var/log/snort/ -c /etc/snort/snort.conf
+
+Use Snort signatures against a pcap:
+
+sudo snort -r /home/activity_resources/pcaps/ids.pcap -c snort.rule
+
+---------------------------------------------------------------------------------------------------------
+
+Tools/Techniques: Wireshark, TCPDump, Open Source Research (OSR)
+
+Prior Approvals: The Gorgan Government has mandated that all protections are required to be tested and validated prior to Droping and/or Blocking any traffic. Seek any clarifying guidance from Mission Command(Instructor), and ensure approval is received prior to moving between the different tasks.
+
+Scheme of Maneuver:
+Task 1
+> Linux Ops Station
+→ INTERNET_HOST
+-→ BLUE_Host-1
+-→ BLUE_Host-3
+-→ BLUE_INT_DMZ_HOST-1
+
+Target Section:
+
+Pivot
+Hostname: INTERNET_HOST
+IP: 10.10.0.40 (Use the provided floating IP only for login from outside of the network
+Creds: PROVIDED CREDENTIALS
+Action: Utilize to Pivot into Gorgan Cyberspace and test filters & Rules
+
+T1
+Hostname: BLUE_Host-1
+IP: 172.16.82.106
+Creds: student : password
+Action: Implement Host Filtering to Allow and Restrict Communications and Traffic
+
+T2
+Hostname: BLUE_Host-3
+IP: 172.16.82.112
+Creds: student : password
+Action: Implement Host Filtering to Allow and Restrict Communications and Traffic
+
+T3
+Hostname: BLUE_INT_DMZ_HOST-1
+IP: 172.16.40.10
+Creds: student : password
+Action: Implement Host Filtering to Allow and Restrict Communications and Traffic
+
+T4
+Hostname: (Will be provided by Mission Command)
+IP: 10.50.XXX.XXX (Will be Provided by Mission Command)
+creds: studentX:passwordX (X = Student Number)
+Known Ports: Unknown
+Action: Interrogate Target and validate Signatures
+
+T5
+Hostname: BLUE_PRIV_HOST-1
+IP: 192.168.1.10
+creds: student : password
+Action: Allow traffic through NAT Capabilities
+
+T6
+Hostname: BLUE_PRIV_HOST-3
+IP: 192.168.3.30
+creds: student : password
+Action: Allow traffic through NAT Capabilities
+
+ sudo iptables -A INPUT -p tcp -m multiport --ports 22,23,3389,6010,6011,6012,57828,57826 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+sudo iptables -A INPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --ports 22,23,3389 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -P INPUT DROP
+sudo iptables -P OUTPUT DROP
+sudo iptables -P FORWARD DROP
+sudo iptables -A INPUT -p icmp --icmp-type echo-request -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-reply -j ACCEPT
+
+sudo iptables -A INPUT -p tcp -m multiport --sports 6579,4444 -j ACCEPT
+sudo iptables -A INPUT -p tcp -m multiport --dports 6579,4444 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --sports 6579,4444 -j ACCEPT
+sudo iptables -A OUTPUT -p tcp -m multiport --dports 6579,4444 -j ACCEPT
+sudo iptables -A INPUT -p udp -m multiport --sports 6579,4444 -j ACCEPT
+sudo iptables -A INPUT -p udp -m multiport --dports 6579,4444 -j ACCEPT
+sudo iptables -A OUTPUT -p udp -m multiport --sports 6579,4444 -j ACCEPT
+sudo iptables -A OUTPUT -p udp -m multiport --dports 6579,4444 -j ACCEPT
+
+sudo iptables -A INPUT -p tcp --dport 6579 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 6579 -m state --state ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 6579 -m state --state ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp --sport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+
+sudo iptables -A INPUT -p icmp --icmp-type echo-request -s 10.10.0.40 -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type echo-reply -s 10.10.0.40 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-request -d 10.10.0.40 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-reply -d 10.10.0.40 -j ACCEPT
+
+sudo iptables -A INPUT -p icmp --icmp-type echo-request -s 10.10.0.40 -d 172.16.82.106 -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type echo-reply -s 10.10.0.40 -d 172.16.82.106 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-request -s 172.16.82.106 -d 10.10.0.40 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-reply -s 172.16.82.106 -d 10.10.0.40 -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type echo-request -s 172.16.82.106 -d 10.10.0.40 -j ACCEPT
+sudo iptables -A INPUT -p icmp --icmp-type echo-reply -s 172.16.82.106 -d 10.10.0.40 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-request -s 10.10.0.40 -d 172.16.82.106 -j ACCEPT
+sudo iptables -A OUTPUT -p icmp --icmp-type echo-reply -s 10.10.0.40 -d 172.16.82.106 -j ACCEPT
+
+sudo iptables -A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A INPUT -p tcp --sport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --sport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+sudo iptables -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT
+
+
+
 
 
 
