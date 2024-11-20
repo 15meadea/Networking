@@ -87,6 +87,28 @@ proxychains nc localhost 65432
 
 
 
+
+
+student@blue-internet-host-student-9:~$ ssh Sterling@10.50.23.236 -L 1111:localhost:22
+student@blue-internet-host-student-9:~$ ssh Sterling@localhost -p 1111 -L 2323:10.1.2.200:23
+student@blue-internet-host-student-9:~$ telnet localhost 2323
+Lana@lana:~$ ssh Sterling@10.1.2.130 -R 3333:localhost:8976
+student@blue-internet-host-student-9:~$ ssh Sterling@localhost -p 1111 -L 4444:localhost:3333
+student@blue-internet-host-student-9:~$ ssh Lana@localhost -p 4444 -L 5555:10.2.5.20:22
+student@blue-internet-host-student-9:~$ ssh Cheryl@localhost -p 5555 -L 3232:10.3.9.39:23
+student@blue-internet-host-student-9:~$ telnet localhost 3232
+Malory@malory:~$ ssh Cheryl@10.3.9.33 -R 6666:localhost:3597
+student@blue-internet-host-student-9:~$ ssh Cheryl@localhost -p 5555 -L 7777:localhost:6666
+student@blue-internet-host-student-9:~$ ssh Malory@localhost -p 7777 -D 9050
+Malory@malory:~$ ss -nltp
+student@blue-internet-host-student-9:~$ proxychains nc localhost 58246
+
+
+
+![d78ded20433ac6d8bb9413bedfb300c6](https://github.com/user-attachments/assets/ccb784e4-3db5-4b00-a995-72667797b07f)
+
+
+
 (UNKNOWN) [192.168.0.30] 80 (http) open : Operation now in progress
 the flag on this machine is a non well known tcp port following 
 a simmilar scheme as net-ssh-02 ports but higher
