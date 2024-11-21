@@ -65,5 +65,11 @@ Capstone 01
 
 10.1.1.126 - OPEN PORTS: ---
 
+# Tunnel to Pivot
+## student@blue-internet-host-student-9:~$ ssh net2_student9@10.50.20.84 -L 20901:localhost:22
 
+# Telnet Tunnel to .11
+## student@blue-internet-host-student-9:~$ ssh net2_student9@localhost -p 20901 -L 20923:10.1.1.11:23
 
+# Telnet To .11
+## student@blue-internet-host-student-9:~$ telnet localhost 20923
