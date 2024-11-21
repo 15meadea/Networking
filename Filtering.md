@@ -279,9 +279,9 @@ Action: Implement Host Filtering to Allow and Restrict Communications and Traffi
 
 T4
 Hostname: (Will be provided by Mission Command)
-IP: 10.50.XXX.XXX (Will be Provided by Mission Command)
+IP: 10.50.23.190 (Will be Provided by Mission Command)
 creds: studentX:passwordX (X = Student Number)
-Known Ports: Unknown
+Known Ports: 25 
 Action: Interrogate Target and validate Signatures
 
 T5
@@ -315,15 +315,6 @@ sudo iptables -A INPUT -p udp -m multiport --dports 6579,4444 -j ACCEPT
 sudo iptables -A OUTPUT -p udp -m multiport --sports 6579,4444 -j ACCEPT
 sudo iptables -A OUTPUT -p udp -m multiport --dports 6579,4444 -j ACCEPT
 
-sudo iptables -A INPUT -p tcp --dport 6579 -m state --state NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --sport 6579 -m state --state ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --dport 6579 -m state --state ESTABLISHED -j ACCEPT
-sudo iptables -A INPUT -p tcp --sport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A INPUT -p tcp --dport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --sport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
-sudo iptables -A OUTPUT -p tcp --dport 4444 -m state --state NEW,ESTABLISHED -j ACCEPT
-
-
 sudo iptables -A INPUT -p icmp --icmp-type echo-request -s 10.10.0.40 -j ACCEPT
 sudo iptables -A INPUT -p icmp --icmp-type echo-reply -s 10.10.0.40 -j ACCEPT
 sudo iptables -A OUTPUT -p icmp --icmp-type echo-request -d 10.10.0.40 -j ACCEPT
@@ -346,7 +337,14 @@ sudo iptables -A OUTPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j AC
 
 
 
+sudo snort -D -l /var/log/snort/ -c /etc/snort/snort.conf
+tcp
+alert icmp any any -> any any (msg:"Cows";content:"|DE AD BE EF|";sid:1000001;)
+alert icmp any any -> 10.3.0.0/24 any (msg:"DMZ Ping";itype:8;icode:0;sid:1000002;)
+alert ip any any -> 192.168.65.20 3389 (msg:"RDP!"; flow:to_server,established; sid:1000005;)
 
+alert tcp any any -> any 445 (msg:"SMB/CIFS traffic detected on port 445"; flow:to_server,established; sid:1000003;)
+alert tcp any any -> any 139 (msg:"SMB/CIFS traffic detected on port 139"; flow:to_server,established; sid:1000004;)
 
 
 
