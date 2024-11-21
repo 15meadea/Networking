@@ -5,6 +5,7 @@ creds: netY_studentX:passwordX (netY = Networking Class Identifier & studentX = 
 Any system, you reach or login to, you should check the "/usr/share/cctc/" directory. This is where any/all files of interest or instructions will be provided. You should always check this directory for information, just in case.
 
 for i in {1..254}; do (ping -c 1 172.16.82.$i | grep "bytes from" &) ; done
+
 ss -ntlp
 
 You will have to conduct reconnaissance within the new environment to find the questions. The CTFD is only a repository for the BASE64 converted answers.
