@@ -43,7 +43,7 @@ Malory@malory:~$ ss -nltp
 
 student@blue-internet-host-student-9:~$ proxychains nc localhost 58246
 
-d78ded20433ac6d8bb9413bedfb300c6
+![image](https://github.com/user-attachments/assets/62b49f9d-7733-430c-b27e-a80b382766c1)
 
 ----------------------------------------------------------------------------------------------------
 
