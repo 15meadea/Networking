@@ -53,7 +53,7 @@ Capstone 01
 
 10.1.1.11 - OPEN PORTS: FTP-21, Telnet-23, 1918, 80
 
-10.1.1.25 - OPEN PORTS: FTP-21
+10.1.1.25 - OPEN PORTS: FTP-21 connect with ftp
 
 10.1.1.30 - OPEN PORTS: ?
 
