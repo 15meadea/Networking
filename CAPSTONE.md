@@ -48,12 +48,19 @@ student@blue-internet-host-student-9:~$ proxychains nc localhost 58246
 ----------------------------------------------------------------------------------------------------
 
 Capstone 01
+
 10.1.1.11 - OPEN PORTS: FTP-21, Telnet-23
+
 10.1.1.25 - OPEN PORTS: FTP-21
+
 10.1.1.30 - OPEN PORTS: ?
+
 10.1.1.33 - OPEN PORTS: FTP-21, Telnet-23, HTTP-80
+
 10.1.1.90 - OPEN PORTS: ---
+
 10.1.1.125 - OPEN PORTS: 125/tcp locus-map
+
 10.1.1.126 - OPEN PORTS: ---
 
 
