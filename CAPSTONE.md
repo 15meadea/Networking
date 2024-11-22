@@ -47,23 +47,47 @@ student@blue-internet-host-student-9:~$ proxychains nc localhost 58246
 
 ![image](https://github.com/user-attachments/assets/62b49f9d-7733-430c-b27e-a80b382766c1)
 
+
+
+tcpdump -i eth1 -s0 -vv -A port 69
+
+salt will be in home directory
+
+creds wil be only to easy track
+
 ----------------------------------------------------------------------------------------------------
 
 Capstone 01
 
-10.1.1.11 - OPEN PORTS: FTP-21, Telnet-23, 1918, 80
+Cap2 === 10.1.1.11 - OPEN PORTS: FTP-21, Telnet-23, 1918, 80
 
-10.1.1.25 - OPEN PORTS: FTP-21 connect with ftp w/ proxychains, pasv or pass,ls, 
+Cap3 === 10.1.1.25 - OPEN PORTS: FTP-21, 791, 4869
+There is a webservice that corresponds with the rfc that governs ipv4 header structure 791
+there is a listening tcp port on this system that is waiting for connections.
+build a python3 tcp stream sender and send it thu your your tunnel to say Hi.
+send your message as a bytes-like object and decode the response to/from UTF-8 to get
+the doble-encoed message. you can use cyber chef to help you decode the message to Human Readable message.
 
 10.1.1.30 - OPEN PORTS: ?
 
-10.1.1.33 - OPEN PORTS: FTP-21, Telnet-23, HTTP-80
+Cap4 === 10.1.1.33 - OPEN PORTS: FTP-21, Telnet-23, HTTP-80
+Capstone 05 is on a different network that only this system can see
+it is trying to attack this box, on one of the ports associated with the W32/Blaster Worm(80,69).
+Use a sniffing tool(tcpdump) to try to find the message it is trying to send.
+
+RIPv2 is running on the 10.1.1.0/25 network try to sniff out the traffic to find out what networks its advertizing in its updates
+what you find will be the ip address of the nethe ip address of the next environment pivot to access from your internet host
+
+10.50.21.126/32
+ssh is running on a higher port although it only seems to accept connections when it looks like its coming from a cisco devices ttl. try using iptables to adjust your sending ttl.
+the flag for this system is the ssh port number
 
 10.1.1.90 - OPEN PORTS: ---
 
 10.1.1.125 - OPEN PORTS: 125/tcp locus-map
 
-10.1.1.126 - OPEN PORTS: ---
+N10.1.1.126 - OPEN PORTS: ---
+
 
 # Tunnel to Pivot
 ## student@blue-internet-host-student-9:~$ ssh net2_student9@10.50.20.84 -L 20901:localhost:22
