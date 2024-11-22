@@ -21,7 +21,7 @@ i.e. Net1_student1 can use 10100 - 10199 and Net4_student14 can use 41400 - 4149
 
 student@blue-internet-host-student-9:~$ ssh Sterling@10.50.23.236 -L 1111:localhost:22
 
-student@blue-internet-host-student-9:~$ ssh Sterling@localhost -p 1111 -L 2323:10.1.2.200:23
+student@blue-inter10.2.2.7net-host-student-9:~$ ssh Sterling@localhost -p 1111 -L 2323:10.1.2.200:23
 
 student@blue-internet-host-student-9:~$ telnet localhost 2323
 
@@ -78,9 +78,8 @@ Use a sniffing tool(tcpdump) to try to find the message it is trying to send.
 RIPv2 is running on the 10.1.1.0/25 network try to sniff out the traffic to find out what networks its advertizing in its updates
 what you find will be the ip address of the nethe ip address of the next environment pivot to access from your internet host
 
-10.50.21.126/32
-ssh is running on a higher port although it only seems to accept connections when it looks like its coming from a cisco devices ttl. try using iptables to adjust your sending ttl.
-the flag for this system is the ssh port number
+
+iptables -t mangle -A POSTROUTING -j TTL --tll-set 255
 
 10.1.1.90 - OPEN PORTS: ---
 
@@ -88,6 +87,25 @@ the flag for this system is the ssh port number
 
 N10.1.1.126 - OPEN PORTS: ---
 
+10.50.21.126/32
+ssh is running on a higher port although it only seems to accept connections when it looks like its coming from a cisco devices ttl. try using iptables to adjust your sending ttl.
+the flag for this system is the ssh port number
+
+10.2.2.7
+SSH is running on a higher port but not acessible from the outside
+different username and password
+intercept credentials
+another system has a tool
+flag is password
+netN_comradeX
+
+10.10.10.140
+
+net2_comrade9@capstone-07:$ ssh net2_student9@10.2.2.6 -p 7777 -R 20922:localhost:2222
+
+student@blue-internet-host-student-9:~$ ssh net2_student9@localhost -p 20901 -L 20908:localhost:20922
+
+student@blue-internet-host-student-9:~$ ssh net2_comrade9@localhost -p 20908
 
 # Tunnel to Pivot
 ## student@blue-internet-host-student-9:~$ ssh net2_student9@10.50.20.84 -L 20901:localhost:22
